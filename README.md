@@ -10,33 +10,43 @@ A smart Web API framework, designed for Python 3.
 
 Install API Star:
 
-    $ pip3 install apistar
+```console
+$ pip3 install apistar
+```
 
 Create a new project:
 
-    $ apistar new --template minimal
-    app.py
-    tests.py
-    $ cat app.py
-    from apistar import App, Route
+```console
+$ apistar new --template minimal
+app.py
+tests.py
+$ cat app.py
+```
+```python
+from apistar import App, Route
 
-    def welcome():
-        return {'message': 'Welcome to API Star!'}
+def welcome():
+    return {'message': 'Welcome to API Star!'}
 
-    app = App(routes=[
-        Route('/', 'GET', welcome)
-    ])
+app = App(routes=[
+    Route('/', 'GET', welcome)
+])
+```
 
 Run the application:
 
-    $ apistar run
-    Running at http://localhost:8080/
+```console
+$ apistar run
+Running at http://localhost:8080/
+```
 
 Run the tests:
 
-    $ apistar test
-    tests.py ..
-    ===== 2 passed in 0.05 seconds =====
+```console
+$ apistar test
+tests.py ..
+===== 2 passed in 0.05 seconds =====
+```
 
 ---
 
@@ -176,7 +186,9 @@ def debug_environ(environ: wsgi.WSGIEnviron):
 API Star includes the `py.test` testing framework. You can run all tests in
 a `tests.py` module or a `tests/` directory, by using the following command:
 
-    $ apistar test
+```console
+$ apistar test
+```
 
 The simplest way to test a view is to call it directly.
 
@@ -230,13 +242,17 @@ plan to be adding more realistic & useful test types, such as database query per
 
 A development server is available, using the `run` command:
 
-    $ apistar run
+```console
+$ apistar run
+```
 
 The recommended production deployment is GUnicorn, using the Meinheld worker.
 
-    $ pip install gunicorn
-    $ pip install meinheld
-    $ gunicorn app:app.wsgi --workers=4 --bind=0.0.0.0:5000 --pid=pid --worker-class=meinheld.gmeinheld.MeinheldWorker
+```console
+$ pip install gunicorn
+$ pip install meinheld
+$ gunicorn app:app.wsgi --workers=4 --bind=0.0.0.0:5000 --pid=pid --worker-class=meinheld.gmeinheld.MeinheldWorker
+```
 
 Typically you'll want to run as many workers as you have CPU cores on the server.
 
